@@ -1,6 +1,10 @@
 const router = require('express').Router()
 
-// GET /places
+// GET PLACES/NEW
+router.get('/new', (req,res)=>{
+  res.render('places/new')
+})
+// GET /PLACES
 router.get('/', (req, res) => {
   let places = [{
     name: 'Food Restaurant 1',
