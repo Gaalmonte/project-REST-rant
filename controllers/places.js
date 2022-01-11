@@ -4,6 +4,7 @@ const router = require('express').Router()
 router.get('/new', (req,res)=>{
   res.render('places/new')
 })
+
 // GET /PLACES
 router.get('/', (req, res) => {
   let places = [{
@@ -20,6 +21,12 @@ router.get('/', (req, res) => {
     pic: '/images/food2.jpg'
   }]
   res.render('places/index', {places})
+})
+
+// POST PLACES
+router.post('/', (req, res) => {
+  console.log(req.body)
+  res.send('POST /places')
 })
 
 module.exports = router
