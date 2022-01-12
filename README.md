@@ -1,6 +1,6 @@
 # Project REST-Rant
 
-REST-Rant is an app where users can review restaurants.
+REST-Rant is an app where users can view restaurants locations, comments and reviews.
 
 ### Routes table
 
