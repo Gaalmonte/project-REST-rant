@@ -11,13 +11,13 @@ function show (data) {
                         </div>
                         <div className="row gx-2 justify-content-center">
                             <div className="col-md-6">
-                            <p>Famous for {data.place.cuisines} !</p>
                             <img src={data.place.pic} label="cuisine pic" className="img-thumbnail"/>
-                            <p>Locate in {data.place.city}, {data.place.state}.</p>
+                            <p>Located in {data.place.city}, {data.place.state}.</p>
                             </div>
                             <div className="col-md-6">
                             <p className="bg-info">Review</p>
-                            <p>No review yet!</p> 
+                            <p><h3>{data.place.showEstablished()}</h3></p> 
+                            <h4>Famous for {data.place.cuisines} !</h4>
                             </div>
                         </div>
                         <div className="row3">
