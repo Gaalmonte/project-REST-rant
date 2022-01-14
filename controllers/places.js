@@ -13,6 +13,9 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
+  if (!req.body.pic) {
+    req.body.pic = 'https://placedog.net/500/280'
+  }
   db.Place.create(req.body)
   .then(() => {
       res.redirect('/places')
