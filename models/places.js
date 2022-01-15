@@ -9,9 +9,10 @@ const placeSchema = new mongoose.Schema({
   founded: {
     type: Number,
     min: [1600, 'Minimum is 1600!'],
-    max:[new Date().getFullYear(), 'cant be in the future!']},
-  comments: [{type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}],
-})
+    max:[new Date().getFullYear(), 'cant be in the future!'],
+  },
+  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
+});
 
 placeSchema.methods.showEstablished = function() {
   return `${this.name} has been serving ${this.city}, ${this.state} since ${this.founded}.`

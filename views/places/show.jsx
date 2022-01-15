@@ -40,10 +40,9 @@ function show (data) {
                             </div>
                         </div>
                         <div className="row3">
-                            <h3 className="bg-info">Comment Section</h3>
-                            {comments}
-                            
+                            <h3 className="bg-info">Comments</h3>                            
                         </div>
+                        {comments}
                         {/* EDIT */}
                         <div>
                         <a href={`/places/${data.id}/edit`} className="btn btn-warning">
