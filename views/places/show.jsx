@@ -12,32 +12,31 @@ function show (data) {
         Not yet rated
         </h3>
     )
-    if (data.place.comments.length){
-        let rating = (
-            <h3 className="inactive">
-              Not yet rated
-            </h3>
-          )
-          if (data.place.comments.length) {
+     if (data.place.comments.length) {
             let sumRatings = data.place.comments.reduce((tot, c) => {
               return tot + c.stars
             }, 0)
-            let averageRating = sumRatings / data.place.comments.length
+            let averageRating = Math.round(sumRatings / data.place.comments.length)
+            let stars = ''
+            for (let i = 0; i < averageRating; i++){
+            rating += '🌟'
+
+            }
+            console.log('stars2')
             rating = (
               <h3>
-                {Math.round(averageRating)} stars
+                {stars} stars
               </h3>
             )
-          }
         comments = data.place.comments.map(c => {
             return (
-                <div className="border">
+                <div key={c.id} className="border">
                     <h2 className="rant">{c.rant ? 'Rant! 🤬' : 'Rave! 🥰'}</h2>
                     <h4>{c.content}</h4>
                     <h3>
                         <stong>- {c.author}</stong>
                     </h3>
-                    <h4>Rating: {c.stars}</h4>
+                    <h4>Rating: {c.stars} </h4>
                 </div>
             )
         })
@@ -69,33 +68,33 @@ function show (data) {
                         
                         <h4 className="bg-info">Add your own comment!</h4>
                         <form action={`/places/${data.place.id}/comment`} method="POST">
-                            <div class="form-group row">
-                                <label  class="col-sm-2 col-form-label">Name: </label>
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" id="author" name="author" placeholder="Jane Doe"/>
+                            <div className="form-group row">
+                                <label  className="col-sm-2 col-form-label">Name: </label>
+                                <div className="col-md-8">
+                                    <input type="text" className="form-control" id="author" name="author" placeholder="Jane Doe"/>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Rating: </label>
-                                <div class="col-md-8">
-                                    <input type="range" step="0.5" min="1" max="5" name="stars" id="stars"/>   
+                            <div className="form-group row">
+                                <label className="col-sm-2 col-form-label">Rating: </label>
+                                <div className="col-md-8">
+                                    <input type="range" step="0.5" min="1" max="5" name="stars" id="stars" className="form-control"/>   
                                 </div>
                             </div>
-                            <div class="form-group row">
-                             <label  class="col-sm-2 col-form-label">Is this a rant? </label>
-                             <div class="col-sm-1">
-                                <div class="form-check">
+                            <div className="form-group row">
+                             <label  className="col-sm-2 col-form-label">Is this a rant? </label>
+                             <div className="col-sm-1">
+                                <div className="form-check">
                                     <input type="checkbox" id="rant" name="rant" className="form-control" />
                                 </div>
                              </div>
                             </div>
-                            <div class="form-group row">
-                                <label  class="col-sm-2 col-form-label">Comment: </label>
-                                <div class="col-md-8">
-                                    <textarea class="form-control" id="content" name="content" rows="3" placeholder="I love this place! ..."></textarea>   
+                            <div className="form-group row">
+                                <label  className="col-sm-2 col-form-label">Comment: </label>
+                                <div className="col-md-8">
+                                    <textarea className="form-control" id="content" name="content" rows="3" placeholder="I love this place! ..."></textarea>   
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" className="btn btn-primary">Submit</button>
                         </form>
 
                         {/* EDIT */}
