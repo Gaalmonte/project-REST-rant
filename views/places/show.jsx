@@ -4,30 +4,36 @@ const Def = require('../default')
 function show (data) {
     let comments = (
         <h3 className="inactive">
-            Empty, no comments yet!
+          No comments yet!
         </h3>
-    )
+      )
     let rating = (
         <h3 className="inactive">
-        Not yet rated
+          Not yet rated
         </h3>
-    )
-     if (data.place.comments.length) {
-            let sumRatings = data.place.comments.reduce((tot, c) => {
-              return tot + c.stars
-            }, 0)
-            let averageRating = Math.round(sumRatings / data.place.comments.length)
-            let stars = ''
-            for (let i = 0; i < averageRating; i++){
-            rating += '🌟'
+      )
+      let sumRatings
 
-            }
-            console.log('stars2')
-            rating = (
-              <h3>
-                {stars} stars
-              </h3>
-            )
+      if (data.place.comments.length) {
+        sumRatings = data.place.comments.reduce((tot, c) => {
+            console.log('tot, c.stars', tot, c.stars)
+          return tot + c.stars
+        }, 0)
+
+        console.log('sumRatings', sumRatings)
+        let averageRating = Math.round(sumRatings / data.place.comments.length)
+        console.log('average', averageRating)
+
+        let stars = ''
+        for (let i = 0; i < averageRating; i++) {
+          stars += '🌟'
+          console.log('stars', stars)
+        }
+        rating = (
+          <h3>
+            {stars} Stars
+          </h3>
+        )
         comments = data.place.comments.map(c => {
             return (
                 <div key={c.id} className="border">
@@ -55,6 +61,7 @@ function show (data) {
                             </div>
                             <div className="col-md-6">
                             <h3 className="bg-info">Review</h3>
+                            {rating}
                             <p><h3>{data.place.showEstablished()}</h3></p> 
                             <h4>Famous for {data.place.cuisines} !</h4>
                             </div>
@@ -75,13 +82,13 @@ function show (data) {
                                 </div>
                             </div>
                             <div className="form-group row">
-                                <label className="col-sm-2 col-form-label">Rating: </label>
+                                <label className="col-sm-2 col-form-label" htmlFor="stars">Rating: </label>
                                 <div className="col-md-8">
                                     <input type="range" step="0.5" min="1" max="5" name="stars" id="stars" className="form-control"/>   
                                 </div>
                             </div>
                             <div className="form-group row">
-                             <label  className="col-sm-2 col-form-label">Is this a rant? </label>
+                             <label  className="col-sm-2 col-form-label" htmlFor="rant">Is this a rant? </label>
                              <div className="col-sm-1">
                                 <div className="form-check">
                                     <input type="checkbox" id="rant" name="rant" className="form-control" />
