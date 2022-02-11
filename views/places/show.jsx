@@ -91,7 +91,7 @@ function show (data) {
                              <label  className="col-sm-2 col-form-label" htmlFor="rant">Is this a rant? </label>
                              <div className="col-sm-1">
                                 <div className="form-check">
-                                    <input type="checkbox" id="rant" name="rant" className="form-control" />
+                                    <input type="checkbox" id="rant" name="rant" />
                                 </div>
                              </div>
                             </div>
